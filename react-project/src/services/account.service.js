@@ -9,9 +9,9 @@ class AccountDataService {
         return http.get(`/users/${user_id}/accounts`);
     }
 
-    // create(data) {
-    //     return http.post("/users", data);
-    // }
+    create(user_id, data) {
+        return http.post(`/users/${user_id}/accounts/new`, data);
+    }
 
     // update(id, data) {
     //     return http.put(`/users/${id}`, data);
