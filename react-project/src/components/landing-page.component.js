@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import LoginDataService from "../services/login.service"
 import AccountList from './account-list.component';
 import UserDetails from './user-details.component';
+import TransactionList from './transaction-list.component';
 
 export default function LandingPage() {
 
@@ -75,7 +76,7 @@ export default function LandingPage() {
                                     <a class="nav-link" href="#" onClick={() => { setComp("Account") }}>Account</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Transaction</a>
+                                    <a class="nav-link" href="#" onClick={() => { setComp("Transaction") }}>Transaction</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Service</a>
@@ -93,6 +94,7 @@ export default function LandingPage() {
                 {/* <UserDetails /> */}
                 {myComp === "Account" ? <AccountList /> : null}
                 {myComp === "MyProfile" ? <UserDetails /> : null}
+                {myComp === "Transaction" ? <TransactionList /> : null}
                 <button onClick={killSession}>Logout</button>
             </div>
     )
