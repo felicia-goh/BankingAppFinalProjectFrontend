@@ -1,40 +1,48 @@
 import React, { useState, useEffect } from 'react'
 import LoginDataService from "../services/login.service"
+import UserDetails from './user-details.component';
 
 export default function LandingPage() {
 
     const [auth, setAuth] = useState({ email: '', login_password: '', isLoggedIn: false });
-    const [currUser, setCurrUser] = useState([]);   // id, name, type
+    const [currUserID, setCurrUserID] = useState(0);
 
-    // function setSessionID() {                                   // setSession() should be done when login
-    //     setCurrUser({ id: 20, name: 'jane', email: 'janedoe@gmail.com' });;
-    //     sessionStorage.setItem('mySession', JSON.stringify(currUser));
-    // }
+    function setSessionID(id) {
+        console.log("Inside setSessionID()")
+        sessionStorage.setItem('mySession', id);
+        setCurrUserID(id);
+    }
+
+    function getSessionID() {
+        console.log("Inside getSessionID()")
+        let data = sessionStorage.getItem('mySession');
+        return data;
+    }
+
+    function killSession() {
+        sessionStorage.removeItem('mySession');
+        window.location.reload(false);
+    }
 
     useEffect(() => {
-
+        console.log("Inside useEffect")
     }, [])
 
     function autheticateUser(e) {
         e.preventDefault()
-        console.log(auth);
         LoginDataService.login(auth)
             .then(response => {
-                setCurrUser(response.data)
+                // console.log("response: " + JSON.stringify(response));
+                setSessionID(response.data.id)
                 setAuth({ ...auth, email: '', login_password: '', isLoggedIn: true })
-                console.log("response: " + JSON.stringify(response));
             })
             .catch(e => {
-                console.log(e.detailedMsg);
+                console.log(e);
             });
     }
 
     return (
-        auth.isLoggedIn ?
-            <div>
-                <h4>Welcome back, {currUser.customer_name} !</h4>
-            </div>
-            :
+        getSessionID() == null ?
             <div>
                 <h2>Login</h2>
                 <form onSubmit={autheticateUser}>
@@ -48,6 +56,12 @@ export default function LandingPage() {
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+            </div>
+            :
+            <div>
+                <h4>Welcome back, user id: {currUserID}!</h4>
+                <UserDetails />
+                <button onClick={killSession}>Logout</button>
             </div>
     )
 }

@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import UserList from './components/user-list.component';
+import UserDetails from './components/user-details.component';
 import AccountList from './components/account-list.component';
 import LandingPage from './components/landing-page.component';
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <div class="container">
-        {/* <UserList /> */}
+        {/* <UserDetails /> */}
         {/* <AccountList /> */}
         <LandingPage />
       </div>
