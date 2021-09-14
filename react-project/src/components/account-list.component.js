@@ -4,7 +4,7 @@ import AccountDataService from "../services/account.service"
 export default function AccountList() {
 
     const [accounts, setAccounts] = useState([]);
-    const [currUser, setCurrUser] = useState({ id: 20, name: 'jane', email: 'janedoe@gmail.com' });
+    const [currUser, setCurrUser] = useState({ id: 2, name: 'jane', email: 'janedoe@gmail.com' });
 
     useEffect(() => {
         // setSessionID();                                      // setSession() should be done when login
