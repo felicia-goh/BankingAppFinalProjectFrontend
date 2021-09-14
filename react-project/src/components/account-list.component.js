@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import AccountDataService from "../services/account.service"
+import TransactionList from './transaction-list.component';
 
 export default function AccountList() {
 
@@ -30,15 +31,31 @@ export default function AccountList() {
         console.log("user list: " + JSON.stringify(accounts));
     }
 
+    // function showTransactions(account_id) {
+    //     setClickAccount({clicked: true, account_id: account_id});
+    // }
+
     return (
         <div>
             <div>
-                <h4>Account List</h4>
-                <ul>
+                <h4>Your accounts</h4>
                     {accounts.map((account) => (
-                        <li>{account.id}, {account.account_type}, {account.balance}, {account.open_date}</li>
+                        <div>
+                            {/* onClick={showTransactions(account.id)} */}
+                            <div class="card-product m-3"> 
+                                <div class="card-product-infos">
+                                    <h2>${account.balance}</h2>
+                                    <p>Account ID: {account.id}, {account.account_type} account</p>
+                                </div>
+                            </div>
+
+                            {/* {clickAccount.clicked?
+                                <TransactionList /> : <div></div>
+                            } */}
+                            
+                        </div>
+                        
                     ))}
-                </ul>
             </div>
         </div>
     )

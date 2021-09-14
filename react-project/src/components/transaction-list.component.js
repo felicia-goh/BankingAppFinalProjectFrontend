@@ -23,7 +23,8 @@ export default function TransactionList() {
     }
 
     function retrieveTransactions() {
-        TransactionDataService.get(5)                     // account is hardcoded
+
+        TransactionDataService.get(1)                     // account is hardcoded
             .then(response => {
                 setTransactions(response.data)
                 console.log(response.data);
