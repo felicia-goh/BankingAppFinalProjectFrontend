@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import LoginDataService from "../services/login.service"
+
 import AccountList from './account-list.component';
 import UserDetails from './user-details.component';
 import TransactionList from './transaction-list.component';
@@ -97,5 +98,6 @@ export default function LandingPage() {
                 {myComp === "Transaction" ? <TransactionList /> : null}
                 <button onClick={killSession}>Logout</button>
             </div>
+
     )
 }
