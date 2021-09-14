@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import AccountDataService from "../services/account.service"
+import TransactionList from './transaction-list.component';
 
 export default function AccountList() {
 
     const [accounts, setAccounts] = useState([]);
     const [currUser, setCurrUser] = useState({ id: 2, name: 'jane', email: 'janedoe@gmail.com' });
+    // const [clickAccount, setClickAccount] = useState({clicked: false, account_id: 0});
 
     useEffect(() => {
         // setSessionID();                                      // setSession() should be done when login
@@ -34,15 +36,31 @@ export default function AccountList() {
         console.log("user list: " + JSON.stringify(accounts));
     }
 
+    // function showTransactions(account_id) {
+    //     setClickAccount({clicked: true, account_id: account_id});
+    // }
+
     return (
         <div>
             <div>
-                <h4>Account List</h4>
-                <ul>
+                <h4>Your accounts</h4>
                     {accounts.map((account) => (
-                        <li>{account.id}, {account.account_type}, {account.balance}, {account.open_date}</li>
+                        <div>
+                            {/* onClick={showTransactions(account.id)} */}
+                            <div class="card-product m-3"> 
+                                <div class="card-product-infos">
+                                    <h2>${account.balance}</h2>
+                                    <p>Account ID: {account.id}, {account.account_type} account</p>
+                                </div>
+                            </div>
+
+                            {/* {clickAccount.clicked?
+                                <TransactionList /> : <div></div>
+                            } */}
+                            
+                        </div>
+                        
                     ))}
-                </ul>
             </div>
         </div>
     )
