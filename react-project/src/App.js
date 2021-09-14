@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import UserList from './components/user-list.component';
 import AccountList from './components/account-list.component';
 import LandingPage from './components/landing-page.component';
+import TransactionList from './components/transaction-list.component';
+import CreateTransaction from './components/transaction-create.component';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         {/* <UserList /> */}
         {/* <AccountList /> */}
         <LandingPage />
+        <TransactionList />
+        <CreateTransaction />
       </div>
     </div>
   );
