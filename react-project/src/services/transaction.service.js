@@ -9,9 +9,9 @@ class TransactionDataService {
         return http.get(`/accounts/${account_id}/transactions`);
     }
 
-    // create(data) {
-    //     return http.post(`/accounts/${account_id}/transactions/new`, data);
-    // }
+    create(account_id, data) {
+        return http.post(`/accounts/${account_id}/transactions/new`, data);
+    }
 
     // delete(id) {
     //     return http.delete(`/users/${id}`);

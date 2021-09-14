@@ -5,15 +5,17 @@ import UserList from './components/user-list.component';
 import AccountList from './components/account-list.component';
 import LandingPage from './components/landing-page.component';
 import TransactionList from './components/transaction-list.component';
+import CreateTransaction from './components/transaction-create.component';
 
 function App() {
   return (
     <div className="App">
-      <TransactionList />
       <div class="container">
         {/* <UserList /> */}
         {/* <AccountList /> */}
         <LandingPage />
+        <TransactionList />
+        <CreateTransaction />
       </div>
     </div>
   );
