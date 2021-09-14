@@ -5,9 +5,9 @@ class UserDataService {
         return http.get("/users");
     }
 
-    // get(id) {
-    //     return http.get(`/users/${id}`);
-    // }
+    get(id) {
+        return http.get(`/users/${id}`);
+    }
 
     // create(data) {
     //     return http.post("/users", data);
