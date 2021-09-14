@@ -3,7 +3,7 @@ import UserDataService from "../services/user.service"
 
 export default function UserDetails() {
 
-    const [currUserID, setCurrUserID] = useState();
+    const [currUserID, setCurrUserID] = useState(0);
     const [userDetails, setUserDetails] = useState([]);
 
     function getSessionID() {
@@ -16,7 +16,7 @@ export default function UserDetails() {
     useEffect(() => {
         getSessionID();
         retrieveUserDetails();
-    }, [])
+    }, [currUserID])
 
     function retrieveUserDetails() {
         UserDataService.get(currUserID)
@@ -33,8 +33,8 @@ export default function UserDetails() {
     return (
         <div>
             <div>
-                <h4>User Details</h4>
-                <p>{userDetails.customer_name}</p>
+                <h4>{userDetails.customer_name}</h4>
+                <p>Current user id: {currUserID}</p>
                 <p>{userDetails.email}</p>
                 <p>{userDetails.address}</p>
             </div>
