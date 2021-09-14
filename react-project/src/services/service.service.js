@@ -6,6 +6,10 @@ class ServiceDateService {
         return http.get(`accounts/${account_id}/services/${service_id}`);
     }
 
+    postServiceRequset(account_id, data) {
+        return http.post(`accounts/${account_id}/services/new`, data)
+    }
+
     // get(id) {
     //     return http.get(`/users/${id}`);
     // }

@@ -4,15 +4,17 @@ import { Switch, Route, Link } from "react-router-dom";
 import SingleService from './single-service';
 import AccountList from './account-list.component';
 import UserList from './user-list.component';
+import CreateServiceRequest from './create-service-request.component';
+import userService from '../services/user.service';
 
 
-
-
+export let userIdToExport; // store the user ID
 
 export default function LandingPage() {
 
     const [auth, setAuth] = useState({ email: '', login_password: '', isLoggedIn: false });
     const [currUser, setCurrUser] = useState([]);   // id, name, type
+
 
     // function setSessionID() {                                   // setSession() should be done when login
     //     setCurrUser({ id: 20, name: 'jane', email: 'janedoe@gmail.com' });;
@@ -29,6 +31,7 @@ export default function LandingPage() {
         LoginDataService.login(auth)
             .then(response => {
                 setCurrUser(response.data)
+                userIdToExport = response.data["id"]
                 setAuth({ ...auth, email: '', login_password: '', isLoggedIn: true })
                 console.log("response: " + JSON.stringify(response));
             })
@@ -38,6 +41,8 @@ export default function LandingPage() {
     }
 
     return (
+
+
         auth.isLoggedIn ?
             <div>
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -49,19 +54,24 @@ export default function LandingPage() {
                             <Link to={"/getservicestatus"} className="nav-link">
                                 Get Service Status
                             </Link>
+                            <Link to={"/createservicerequest"} className="nav-link">
+                                Create Service Request
+                            </Link>
                         </li>
                     </div>
                 </nav>
 
-
                 <div>
-                    <h4>Welcome back, {currUser.customer_name} !</h4>
+                    <h4>Welcome back, {currUser.customer_name} (ID: {currUser.id}) !</h4>
                 </div>
 
                 <div className="container mt-3">
                     <Switch>
                         <Route exact path="/getservicestatus" component={SingleService}></Route>
+                        <Route exact path="/createservicerequest" component={CreateServiceRequest}></Route>
                     </Switch>
+
+
                 </div>
             </div>
 
@@ -82,4 +92,5 @@ export default function LandingPage() {
                 </form>
             </div>
     )
+    
 }
