@@ -23,7 +23,7 @@ export default function TransactionList() {
     }
 
     function retrieveTransactions() {
-        TransactionDataService.get(1)                     // pass session id here
+        TransactionDataService.get(1)                     // account is hardcoded
             .then(response => {
                 setTransactions(response.data)
                 console.log(response.data);

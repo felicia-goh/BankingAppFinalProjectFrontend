@@ -18,7 +18,7 @@ export default function CreateTransaction() {
     }, [])
 
     function retrieveAccounts() {
-        AccountDataService.get(2)                     // pass session id here
+        AccountDataService.get(2)                     // user is hardcoded
             .then(response => {
                 setAccounts(response.data)
                 console.log(response.data);
@@ -56,7 +56,7 @@ export default function CreateTransaction() {
                     <select class="form-select" id="account" onChange={e => setTransaction({ ...transaction, account_id: e.target.value })}>
                         <option value="label" selected disabled>Choose your account</option>
                         {accounts.map((account) => (
-                            <option value={account.id}>{account.id}, {account.account_type}, {account.balance}</option>
+                            <option value={account.id}>Account ID: {account.id}, {account.account_type}, Balance: ${account.balance}</option>
                         ))}
                     </select>
                     <div class="mb-3">
