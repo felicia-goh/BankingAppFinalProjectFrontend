@@ -4,6 +4,7 @@ import LoginDataService from "../services/login.service"
 import AccountList from './account-list.component';
 import UserDetails from './user-details.component';
 import TransactionList from './transaction-list.component';
+import CreateUser from './user-create.component';
 
 export default function LandingPage() {
 
@@ -34,7 +35,7 @@ export default function LandingPage() {
 
     function autheticateUser(e) {
         e.preventDefault()
-        LoginDataService.login(auth)
+        LoginDataService.create()
             .then(response => {
                 // console.log("response: " + JSON.stringify(response));
                 setSessionID(response.data.id)
@@ -60,7 +61,12 @@ export default function LandingPage() {
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
+                <h2>Sign Up</h2>
+                <CreateUser />
             </div>
+
+
             :
             <div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
