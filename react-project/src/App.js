@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <div class="container">
         {/* <UserList /> */}
-        {/* <AccountList /> */}
+        
         <LandingPage />
-        <TransactionList />
-        <CreateTransaction />
+        {/* <TransactionList />
+        <CreateTransaction /> */}
       </div>
     </div>
   );

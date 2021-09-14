@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import LoginDataService from "../services/login.service"
+import AccountList from '../components/account-list.component';
 
 export default function LandingPage() {
 
@@ -30,9 +31,11 @@ export default function LandingPage() {
     }
 
     return (
+
         auth.isLoggedIn ?
             <div>
                 <h4>Welcome back, {currUser.customer_name} !</h4>
+                <AccountList />
             </div>
             :
             <div>
@@ -49,5 +52,6 @@ export default function LandingPage() {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+        
     )
 }
