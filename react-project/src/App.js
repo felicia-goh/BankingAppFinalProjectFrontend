@@ -1,11 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import UserList from './components/user-list.component';
+import AccountList from './components/account-list.component';
+import LandingPage from './components/landing-page.component';
 import TransactionList from './components/transaction-list.component';
 
 function App() {
   return (
     <div className="App">
       <TransactionList />
+      <div class="container">
+        {/* <UserList /> */}
+        {/* <AccountList /> */}
+        <LandingPage />
+      </div>
     </div>
   );
 }
