@@ -72,7 +72,7 @@ export default function LandingPage() {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class={myComp === "Profile" ? "nav-link active" : "nav-link"} aria-current="page" href="#" onClick={() => { setComp("Profile") }}>Profie</a>
+                                    <a class={myComp === "Profile" ? "nav-link active" : "nav-link"} aria-current="page" href="#" onClick={() => { setComp("Profile") }}>Profile</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class={myComp === "Account" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("Account") }}>Account</a>
