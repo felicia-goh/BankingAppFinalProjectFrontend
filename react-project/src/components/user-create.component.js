@@ -17,10 +17,10 @@ export default function CreateUser() {
         getSessionID();
     }, [currUserID])
 
-    function CreateNewUser(e) {
+    function createNewUser(e) {
         e.preventDefault()
         console.log(user);
-        UserDataService.create(user.account_id, user)
+        UserDataService.create(user)
             .then(response => {
                 setUser({ ...user, email: '', login_password: '', isLoggedIn: true })
                 console.log("response: " + JSON.stringify(response));
@@ -32,7 +32,7 @@ export default function CreateUser() {
 
     return (
         <div>
-                <form onSubmit={CreateNewUser}>
+                <form onSubmit={createNewUser}>
                     <div class="mb-3">
                         <label for="customer_name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="customer_name" value={user.customer_name} onChange={e => setUser({ ...user, customer_name: e.target.value })} />
