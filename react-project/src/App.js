@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.min.js";
 import UserDetails from './components/user-details.component';
 import AccountList from './components/account-list.component';
 import LandingPage from './components/landing-page.component';
@@ -13,8 +13,6 @@ function App() {
     <div className="App">
       <div class="container">
         <LandingPage />
-        {/* <TransactionList />
-        <CreateTransaction /> */}
       </div>
     </div>
   );
