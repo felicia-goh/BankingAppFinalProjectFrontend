@@ -3,7 +3,7 @@ import http from "../http-common";
 
 class PayeeService {
 
-  addPayee(account_id, data) {
+  create(account_id, data) {
     return http.post(`/accounts/${account_id}/payees/new`, data);
   }
 

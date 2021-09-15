@@ -38,7 +38,7 @@ function AddPayee() {
   function addPayee(e) {
     e.preventDefault()
     console.log(payee);
-    payeeService.addPayee(payee.account_id, payee)
+    payeeService.create(payee.account_id, payee)
       .then(response => {
         setCurrPayee(response.data)
         console.log("response: " + JSON.stringify(response));
