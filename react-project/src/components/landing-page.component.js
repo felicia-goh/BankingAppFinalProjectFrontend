@@ -98,11 +98,11 @@ export default function LandingPage() {
                     {myComp === "MyProfile" ? <UserDetails /> : null}
                     {myComp === "GetServiceStatus" ? <SingleService /> : null}
                     {myComp === "CreateServiceRequest" ? <CreateServiceRequest /> : null}
+                    {myComp === "GetPayees" ? <PayeeList /> : null}
+                    {myComp === "AddPayee" ? <AddPayee /> : null}
                 </div>
 
                 <Footer />
-                {myComp === "GetPayees" ? <PayeeList /> : null}
-                {myComp === "AddPayee" ? <AddPayee /> : null}
             </div>
 
     )
