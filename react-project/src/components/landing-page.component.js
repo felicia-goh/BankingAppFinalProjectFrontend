@@ -16,11 +16,6 @@ export default function LandingPage() {
     const [currUserID, setCurrUserID] = useState(0);
     const [myComp, setComp] = useState("");
 
-
-    // function setSessionID() {                                   // setSession() should be done when login
-    //     setCurrUser({ id: 20, name: 'jane', email: 'janedoe@gmail.com' });;
-    //     sessionStorage.setItem('mySession', JSON.stringify(currUser));
-    // }
     function setSessionID(id) {
         console.log("Inside setSessionID()")
         sessionStorage.setItem('mySession', id);
@@ -60,43 +55,6 @@ export default function LandingPage() {
     }
 
     return (
-
-
-
-        // auth.isLoggedIn ?
-        //     <div>
-        //         <nav className="navbar navbar-expand navbar-dark bg-dark">
-        //             <a href="/users" className="navbar-brand">
-        //                 Online Banking System
-        //             </a>
-        //             <div className="navbar-nav mr-auto">
-        //                 <li className="nav-item">
-        //                     <Link to={"/getservicestatus"} className="nav-link">
-        //                         Get Service Status
-        //                     </Link>
-        //                     <Link to={"/createservicerequest"} className="nav-link">
-        //                         Create Service Request
-        //                     </Link>
-        //                 </li>
-        //             </div>
-        //         </nav>
-
-        //         <div>
-        //             <h4>Welcome back, {currUserID.customer_name} (ID: {currUserID}) !</h4>
-        //         </div>
-
-        //         <div className="container mt-3">
-        //             <Switch>
-        //                 <Route exact path="/getservicestatus" component={SingleService}></Route>
-        //                 <Route exact path="/createservicerequest" component={CreateServiceRequest}></Route>
-        //             </Switch>
-
-
-        //         </div>
-        //     </div>
-
-        //     :
-
         getSessionID() == null ?
 
             <div>
@@ -113,7 +71,7 @@ export default function LandingPage() {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            
+
             :
 
             <div>
@@ -138,9 +96,6 @@ export default function LandingPage() {
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#" onClick={() => { setComp("CreateServiceRequest") }}>Create Service Request</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Service</a>
                                 </li>
                             </ul>
                             <form class="d-flex">
