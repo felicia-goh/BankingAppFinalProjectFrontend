@@ -7,6 +7,8 @@ import CreateUser from './user-create.component';
 import SingleService from './single-service';
 import CreateServiceRequest from './create-service-request.component';
 import CreateTransaction from './transaction-create.component';
+import PayeeList from './payee.list.component';
+import AddPayee from './add-payee.component';
 
 
 export default function LandingPage() {
@@ -96,6 +98,12 @@ export default function LandingPage() {
                                 <li class="nav-item">
                                     <a class="nav-link" href="#" onClick={() => { setComp("CreateServiceRequest") }}>Create Service Request</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onClick={() => { setComp("GetPayees") }}>Get All Payees</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onClick={() => { setComp("AddPayee") }}>Add Payee</a>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-primary" onClick={killSession}>Logout</button>
                         </div>
@@ -109,6 +117,8 @@ export default function LandingPage() {
                 {myComp === "MyProfile" ? <UserDetails /> : null}
                 {myComp === "GetServiceStatus" ? <SingleService /> : null}
                 {myComp === "CreateServiceRequest" ? <CreateServiceRequest /> : null}
+                {myComp === "GetPayees" ? <PayeeList /> : null}
+                {myComp === "AddPayee" ? <AddPayee /> : null}
             </div>
 
     )

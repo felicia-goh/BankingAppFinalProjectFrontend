@@ -33,9 +33,8 @@ export default function AccountList() {
         // console.log("user list: " + JSON.stringify(accounts));
     }
 
-    // function showTransactions(account_id) {
-    //     setClickAccount({clicked: true, account_id: account_id});
-    // }
+
+    
 
     return (
         render === "createAccount" ?
@@ -43,8 +42,8 @@ export default function AccountList() {
             :
             <div>
                 <div>
-                    <h4>Your accounts</h4>
-                    <button class="btn btn-primary" onClick={() => { setRender("createAccount") }}>Request for Account</button>
+                    <h4>Your Accounts</h4>
+                    <button class="btn btn-primary" onClick={() => { setRender("createAccount") }}>Create Account</button>
                     {accounts.map((account) => (
                         <div>
                             {/* onClick={showTransactions(account.id)} */}
