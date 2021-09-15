@@ -19,13 +19,13 @@ export default function Footer() {
                     <div class="col">
                         <small>About</small><br />
                         <small>Careers</small><br />
-                        <small>Investos</small><br />
+                        <small>Investors</small><br />
                         <small>Media</small><br />
                     </div>
                     <div class="col">
                         <small>Sustainability</small><br />
                         <small>Foundation</small><br />
-                        <small>Covid-19 and beyong</small><br />
+                        <small>Covid-19 and beyond</small><br />
                     </div>
                     <div class="col">
                         <small>Facebook</small><br />
@@ -36,7 +36,7 @@ export default function Footer() {
                 <div class="row" >
                     <div class="col">
                         <br />
-                        <small>Terms & Conditions   |   Privacy Policy  |   Fair Dealing Commitment |    Vulnerability Disclosure Policy</small>
+                        <small>Terms & Conditions   |   Privacy Policy  |   Fair Dealing Commitment |   Vulnerability Disclosure Policy</small>
                     </div>
                     <div class="col">
                         <br />

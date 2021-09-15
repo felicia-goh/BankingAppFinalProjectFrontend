@@ -61,8 +61,8 @@ function CreateServiceRequest() {
     currserviceRequest != "" ?
 
       <div>
-        Service Request ID : {currserviceRequest.id}
-        <button type="button" class="btn btn-warning" onClick={reset}>Submit Another Request</button>
+        <h4>Service Request ID: {currserviceRequest.id}</h4>
+        <button type="button" class="btn btn-primary" onClick={reset}>Submit Another Request</button>
       </div>
 
       :

@@ -69,7 +69,8 @@ export default function PayeeList() {
             </div>
           </div>
         ))}
-        <button type="submit" class="btn btn-warning" onClick={() => { setRender("") }}>Go back</button>
+        <br />
+        <button type="submit" class="btn btn-primary" onClick={() => { setRender("") }}>Go back</button>
       </div>
 
       :
