@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import ServiceDateService from "../services/service.service"
 import AccountDataService from "../services/account.service"
-import { userIdToExport } from './landing-page.component';
 
 function SingleService() {
 
+  const [currUserID, setCurrUserID] = useState(0);
   const [service, setService] = useState({ account_id: 0, service_id: 0 });
   const [currService, setCurrService] = useState("") // just the status
   const [accounts, setAccounts] = useState([]);
 
-
-  // const [service, setService] = useState( // hard-code data
-  //   {
-  //     service_id: 11,
-  //     description: 'testing',
-  //     raised_date: "2021-8-12",
-  //     status: "purely testing",
-  //     account_id: 5,
-  //   });
-
   useEffect(() => {
+    getSessionID();
     retrieveAccounts()
-  }, [])
+  }, [currUserID])
 
+  function getSessionID() {
+    console.log("Inside getSessionID()")
+    let data = sessionStorage.getItem('mySession');
+    setCurrUserID(data);
+    return data;
+  }
 
   function retrieveAccounts() {
-    AccountDataService.get(userIdToExport)                     // user is hardcoded
+    AccountDataService.get(currUserID)                     // user is hardcoded
       .then(response => {
         setAccounts(response.data)
         console.log(response.data);

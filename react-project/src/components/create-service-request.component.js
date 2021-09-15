@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import serviceService from '../services/service.service';
 import AccountDataService from "../services/account.service"
-import { userIdToExport } from './landing-page.component';
 
 function CreateServiceRequest() {
 
+  const [currUserID, setCurrUserID] = useState(0);
   const [serviceRequest, setServiceRequest] = useState({
     description: '', account_id: 0
   });
@@ -13,11 +13,19 @@ function CreateServiceRequest() {
 
 
   useEffect(() => {
+    getSessionID();
     retrieveAccounts();
-  }, [])
+  }, [currUserID])
+
+  function getSessionID() {
+    console.log("Inside getSessionID()")
+    let data = sessionStorage.getItem('mySession');
+    setCurrUserID(data);
+    return data;
+  }
 
   function retrieveAccounts() {
-    AccountDataService.get(userIdToExport)  // userToExport is the user ID who logged in
+    AccountDataService.get(currUserID)  // userToExport is the user ID who logged in
       .then(response => {
         setAccounts(response.data)
         console.log(response.data);

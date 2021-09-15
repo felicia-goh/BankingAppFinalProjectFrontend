@@ -6,10 +6,6 @@ import TransactionList from './transaction-list.component';
 import SingleService from './single-service';
 import CreateServiceRequest from './create-service-request.component';
 
-
-export let userIdToExport; // store the user ID
-
-
 export default function LandingPage() {
 
     const [auth, setAuth] = useState({ email: '', login_password: '', isLoggedIn: false });
@@ -41,12 +37,8 @@ export default function LandingPage() {
         e.preventDefault()
         LoginDataService.login(auth)
             .then(response => {
-                setCurrUserID(response.data)
-                userIdToExport = response.data["id"]
-
                 // console.log("response: " + JSON.stringify(response));
                 setSessionID(response.data.id)
-
                 setAuth({ ...auth, email: '', login_password: '', isLoggedIn: true })
             })
             .catch(e => {
