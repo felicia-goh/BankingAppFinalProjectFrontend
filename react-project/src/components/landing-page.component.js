@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import LoginDataService from "../services/login.service"
-
 import AccountList from './account-list.component';
 import UserDetails from './user-details.component';
 import TransactionList from './transaction-list.component';
-import CreateTransaction from './transaction-create.component';
+import SingleService from './single-service';
+import CreateServiceRequest from './create-service-request.component';
 
 export default function LandingPage() {
 
@@ -48,6 +48,7 @@ export default function LandingPage() {
 
     return (
         getSessionID() == null ?
+
             <div>
                 <h2>Login</h2>
                 <form onSubmit={autheticateUser}>
@@ -62,7 +63,9 @@ export default function LandingPage() {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+
             :
+
             <div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
@@ -81,7 +84,10 @@ export default function LandingPage() {
                                     <a class={myComp === "Transaction" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("Transaction") }}>Transaction</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Service</a>
+                                    <a class="nav-link" href="#" onClick={() => { setComp("GetServiceStatus") }}>Get Service Status</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onClick={() => { setComp("CreateServiceRequest") }}>Create Service Request</a>
                                 </li>
                             </ul>
                             <button type="button" class="btn btn-primary" onClick={killSession}>Logout</button>
@@ -92,9 +98,13 @@ export default function LandingPage() {
                 {myComp === "" ? <UserDetails /> : null}
                 {myComp === "Profile" ? <UserDetails /> : null}
                 {myComp === "Account" ? <AccountList /> : null}
+                {myComp === "MyProfile" ? <UserDetails /> : null}
+                {myComp === "Transaction" ? <TransactionList /> : null}
+                {myComp === "GetServiceStatus" ? <SingleService /> : null}
+                {myComp === "CreateServiceRequest" ? <CreateServiceRequest /> : null}
+                <button onClick={killSession}>Logout</button>
                 {myComp === "Transaction" ? <div><TransactionList /><CreateTransaction /></div> : null}
             </div>
 
     )
 
-}
