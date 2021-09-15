@@ -3,15 +3,18 @@ import LoginDataService from "../services/login.service"
 import AccountList from './account-list.component';
 import UserDetails from './user-details.component';
 import TransactionList from './transaction-list.component';
+import CreateUser from './user-create.component';
 import SingleService from './single-service';
 import CreateServiceRequest from './create-service-request.component';
 import CreateTransaction from './transaction-create.component';
+
 
 export default function LandingPage() {
 
     const [auth, setAuth] = useState({ email: '', login_password: '', isLoggedIn: false });
     const [currUserID, setCurrUserID] = useState(0);
     const [myComp, setComp] = useState("");
+    const [render, setRender] = useState("");
 
     function setSessionID(id) {
         console.log("Inside setSessionID()")
@@ -49,22 +52,25 @@ export default function LandingPage() {
 
     return (
         getSessionID() == null ?
+            render === "createUser" ?
+                <CreateUser />
+                :
+                <div>
+                    <h2>Login</h2>
+                    <form onSubmit={autheticateUser}>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" value={auth.email} onChange={e => setAuth({ ...auth, email: e.target.value })} />
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" value={auth.login_password} onChange={e => setAuth({ ...auth, login_password: e.target.value })} />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
 
-            <div>
-                <h2>Login</h2>
-                <form onSubmit={autheticateUser}>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" value={auth.email} onChange={e => setAuth({ ...auth, email: e.target.value })} />
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" value={auth.login_password} onChange={e => setAuth({ ...auth, login_password: e.target.value })} />
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-
+                    <button type="button" class="my-3 btn btn-secondary" onClick={() => { setRender("createUser") }}>Sign Up instead</button> 
+                </div>
             :
 
             <div>
