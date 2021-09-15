@@ -47,7 +47,7 @@ export default function TransactionList() {
     }
 
     return (
-        <div class="wrapper">
+        <div>
             <h4>Transaction History</h4>
             <form onSubmit={""}>
                 <div class="mb-3">
@@ -62,9 +62,8 @@ export default function TransactionList() {
             </form>
 
             <div class="card">
-
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" style={{ backgroundColor: "lightgrey" }}>
+                    <li class="list-group-item" style={{ backgroundColor: "#f3f3f3" }}>
                         <div class="row">
                             <div class="col">
                                 Transaction Type

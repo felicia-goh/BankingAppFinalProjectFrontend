@@ -71,14 +71,14 @@ function CreateServiceRequest() {
         <h4>Create Service Request</h4>
         <form onSubmit={CreateNewServiceRequest}>
 
-          <div class={"description", "mb-3"}>
+          <div class="description mb-3">
             <label for="description" class="form-label">Description</label>
             <input type="text" class="form-control" id="description"
               value={serviceRequest.description}
               onChange={e => setServiceRequest({ ...serviceRequest, description: e.target.value })} />
           </div>
 
-          <div class={"description", "mb-3"} >
+          <div class="description mb-3">
             <label for="description" class="form-label">Account ID</label>
             <select class="form-select" id="account" onChange={e => setServiceRequest({ ...serviceRequest, account_id: e.target.value })}>
               <option value="label" selected disabled>Choose your account</option>
