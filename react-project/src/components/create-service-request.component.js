@@ -6,7 +6,7 @@ import { userIdToExport } from './landing-page.component';
 function CreateServiceRequest() {
 
   const [serviceRequest, setServiceRequest] = useState({
-    description: '', raised_date: '', status: '', account_id: 0
+    description: '', account_id: 0
   });
   const [accounts, setAccounts] = useState([]);
   const [currserviceRequest, setCurrserviceRequest] = useState([]);
@@ -63,36 +63,20 @@ function CreateServiceRequest() {
         <h4>Create Service Request</h4>
         <form onSubmit={CreateNewServiceRequest}>
 
-          <div class="description">
+          <div class={"description", "mb-3"}>
             <label for="description" class="form-label">Description</label>
             <input type="text" class="form-control" id="description"
               value={serviceRequest.description}
               onChange={e => setServiceRequest({ ...serviceRequest, description: e.target.value })} />
           </div>
 
-          <div class="description">
+          <div class={"description", "mb-3"} >
             <label for="description" class="form-label">Account ID</label>
             <select class="form-select" id="account" onChange={e => setServiceRequest({ ...serviceRequest, account_id: e.target.value })}>
               <option value="label" selected disabled>Choose your account</option>
               {accounts.map((account) => (
                 <option value={account.id}>Account ID: {account.id}, {account.account_type}, Balance: ${account.balance}</option>
               ))}
-            </select>
-          </div>
-
-          <div class="raised_date">
-            <label for="birthday">Raised date</label>
-            <input type="date" id="raised_date" name="birthday"
-              onChange={e => setServiceRequest({ ...serviceRequest, raised_date: e.target.value })} />
-          </div>
-
-          <div>
-            <label for="staus">Status</label>
-            <select id="status" size="3"
-              onChange={e => setServiceRequest({ ...serviceRequest, status: e.target.value })} >
-              <option value="pending">Pending</option>
-              <option value="In Process">In Process</option>
-              <option value="resolved">Resolved</option>
             </select>
           </div>
 

@@ -42,14 +42,14 @@ function SingleService() {
     ServiceDateService.getServiceRequest(service.account_id, service.service_id)
       .then(response => {
         setCurrService(response.data)
-        console.log("sasfsdgdsgdsfd" + response.data);
+        console.log("my response data: " + response.data);
       })
       .catch(e => {
         console.log(e);
       });
     console.log("error: " + JSON.stringify(service.account_id + service.service_id));
   }
- 
+
   function reset() {
     setCurrService("")
   }
@@ -67,10 +67,10 @@ function SingleService() {
       :
 
       <div>
-        <h2>Get Service Request Status</h2>
+        <h4>Get Service Request Status</h4>
         <form onSubmit={retrieveServiceStatus}>
 
-        <div class="description">
+          <div class="description">
             <label for="description" class="form-label">Account ID</label>
             <select class="form-select" id="account" onChange={e => setService({ ...service, account_id: e.target.value })}>
               <option value="label" selected disabled>Choose your account</option>
@@ -80,12 +80,6 @@ function SingleService() {
             </select>
           </div>
 
-
-          {/* <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Account ID</label>
-            <input type="text" class="form-control" id="account_id"
-              value={service.account_id} onChange={e => setService({ ...service, account_id: e.target.value })} />
-          </div> */}
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Service ID</label>
             <input type="text" class="form-control" id="service_id"
@@ -93,7 +87,6 @@ function SingleService() {
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <div>test</div>
       </div>
 
   )
