@@ -63,8 +63,8 @@ export default function PayeeList() {
           <div>
             <div class="card-product m-3">
               <div class="card-product-infos">
-                <h4>Payee ID: <b>{p.payee_id}</b></h4>
-                <h4>NickName: <b>{p.nickname}</b></h4>
+                <h4>Nickname: <b>{p.nickname}</b></h4>
+                <h4>Payee Account ID: <b>{p.payee_account_id}</b></h4>
               </div>
             </div>
           </div>
@@ -81,12 +81,12 @@ export default function PayeeList() {
             <div class="description">
               <label for="description" class="form-label">Account ID</label>
               <select class="form-select" id="account" onChange={e => setAccountID(e.target.value)}>
-                <option value="label" selected disabled>Choose your account</option>
+                <option value="label" selected disabled>-- Select an account --</option>
                 {accounts.map((account) => (
                   <option value={account.id}>Account ID: {account.id}, {account.account_type}, Balance: ${account.balance}</option>
                 ))}
               </select>
-              <button type="submit" class="btn btn-primary" onClick={() => { twoInOne("getPayees") }}>Fetch Payees</button>
+              <button type="submit" class="mt-3 btn btn-primary" onClick={() => { twoInOne("getPayees") }}>Fetch Payees</button>
             </div>
 
             {/* <button class="btn btn-primary" onClick={functionsInOneClick("getPayees")}>Fetch Payees</button> */}

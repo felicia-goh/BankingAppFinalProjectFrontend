@@ -7,7 +7,7 @@ import CreateUser from './user-create.component';
 import SingleService from './single-service';
 import CreateServiceRequest from './create-service-request.component';
 import CreateTransaction from './transaction-create.component';
-import PayeeList from './payee.list.component';
+import PayeeList from './payee-list.component';
 import AddPayee from './add-payee.component';
 
 
