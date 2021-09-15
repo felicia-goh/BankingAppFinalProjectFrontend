@@ -79,10 +79,10 @@ export default function LandingPage() {
                                     <a class={myComp === "CreateServiceRequest" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("CreateServiceRequest") }}>Create Service Request</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" onClick={() => { setComp("GetPayees") }}>Get All Payees</a>
+                                    <a class={myComp === "GetPayees" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("GetPayees") }}>Get All Payees</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" onClick={() => { setComp("AddPayee") }}>Add Payee</a>
+                                    <a class={myComp === "AddPayee" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("AddPayee") }}>Add Payee</a>
                                 </li>
                             </ul>
                             <button type="button" class="btn btn-primary loginBtn" onClick={killSession}>Logout</button>
@@ -98,11 +98,11 @@ export default function LandingPage() {
                     {myComp === "MyProfile" ? <UserDetails /> : null}
                     {myComp === "GetServiceStatus" ? <SingleService /> : null}
                     {myComp === "CreateServiceRequest" ? <CreateServiceRequest /> : null}
+                    {myComp === "GetPayees" ? <PayeeList /> : null}
+                    {myComp === "AddPayee" ? <AddPayee /> : null}
                 </div>
 
                 <Footer />
-                {myComp === "GetPayees" ? <PayeeList /> : null}
-                {myComp === "AddPayee" ? <AddPayee /> : null}
             </div>
 
     )
