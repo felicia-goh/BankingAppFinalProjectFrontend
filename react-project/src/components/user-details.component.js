@@ -32,11 +32,37 @@ export default function UserDetails() {
 
     return (
         <div>
-            <div>
-                <h4>{userDetails.customer_name}</h4>
-                <p>Current user id: {currUserID}</p>
-                <p>{userDetails.email}</p>
-                <p>{userDetails.address}</p>
+            <h4>Welcome back, {userDetails.customer_name} !</h4>
+            <div class="wrapper">
+                <form>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="formGroupExampleInput" value={userDetails.email} />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" value={userDetails.address} />
+                        </div>
+                        <label class="col-sm-2 col-form-label"><a href="">Update address</a></label>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Login Password</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="formGroupExampleInput2" value={userDetails.login_password} />
+                        </div>
+                        <label class="col-sm-2 col-form-label"><a href="">Change password</a></label>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Transaction Password</label>
+                        <div class="col-sm-6">
+                            <input type="password" class="form-control" id="formGroupExampleInput2" value={userDetails.transaction_password} />
+                        </div>
+                        <label class="col-sm-2 col-form-label"><a href="">Change password</a></label>
+                    </div>
+                </form>
             </div>
         </div>
     )

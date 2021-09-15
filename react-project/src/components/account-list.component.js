@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import AccountDataService from "../services/account.service"
+import CreateAccount from './account-create.component';
 import TransactionList from './transaction-list.component';
 
 export default function AccountList() {
 
     const [currUserID, setCurrUserID] = useState(0);
     const [accounts, setAccounts] = useState([]);
+    const [render, setRender] = useState("");
 
-    useEffect(() => {                                    // setSession() should be done when login
+    useEffect(() => {
         getSessionID();
         retrieveAccounts();
     }, [currUserID])
@@ -20,7 +22,7 @@ export default function AccountList() {
     }
 
     function retrieveAccounts() {
-        AccountDataService.get(currUserID)                     // pass session id here
+        AccountDataService.get(currUserID)
             .then(response => {
                 setAccounts(response.data)
                 console.log(response.data);
@@ -28,7 +30,7 @@ export default function AccountList() {
             .catch(e => {
                 console.log(e);
             });
-        console.log("user list: " + JSON.stringify(accounts));
+        // console.log("user list: " + JSON.stringify(accounts));
     }
 
     // function showTransactions(account_id) {
@@ -36,13 +38,17 @@ export default function AccountList() {
     // }
 
     return (
-        <div>
+        render === "createAccount" ?
+            <CreateAccount />
+            :
             <div>
-                <h4>Your accounts</h4>
+                <div>
+                    <h4>Your accounts</h4>
+                    <button class="btn btn-primary" onClick={() => { setRender("createAccount") }}>Request for Account</button>
                     {accounts.map((account) => (
                         <div>
                             {/* onClick={showTransactions(account.id)} */}
-                            <div class="card-product m-3"> 
+                            <div class="card-product m-3">
                                 <div class="card-product-infos">
                                     <h2>${account.balance}</h2>
                                     <p>Account ID: {account.id}, {account.account_type} account</p>
@@ -52,11 +58,10 @@ export default function AccountList() {
                             {/* {clickAccount.clicked?
                                 <TransactionList /> : <div></div>
                             } */}
-                            
+
                         </div>
-                        
                     ))}
+                </div>
             </div>
-        </div>
     )
 }
