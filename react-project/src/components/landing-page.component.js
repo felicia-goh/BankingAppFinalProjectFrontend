@@ -4,6 +4,7 @@ import LoginDataService from "../services/login.service"
 import AccountList from './account-list.component';
 import UserDetails from './user-details.component';
 import TransactionList from './transaction-list.component';
+import CreateTransaction from './transaction-create.component';
 
 export default function LandingPage() {
 
@@ -71,33 +72,29 @@ export default function LandingPage() {
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#" onClick={() => { setComp("MyProfile") }}>MyProfile</a>
+                                    <a class={myComp === "Profile" ? "nav-link active" : "nav-link"} aria-current="page" href="#" onClick={() => { setComp("Profile") }}>Profile</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" onClick={() => { setComp("Account") }}>Account</a>
+                                    <a class={myComp === "Account" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("Account") }}>Account</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" onClick={() => { setComp("Transaction") }}>Transaction</a>
+                                    <a class={myComp === "Transaction" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("Transaction") }}>Transaction</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Service</a>
                                 </li>
                             </ul>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
+                            <button type="button" class="btn btn-primary" onClick={killSession}>Logout</button>
                         </div>
                     </div>
                 </nav>
 
-                <h4>Welcome back!</h4>
-                {/* <UserDetails /> */}
+                {myComp === "" ? <UserDetails /> : null}
+                {myComp === "Profile" ? <UserDetails /> : null}
                 {myComp === "Account" ? <AccountList /> : null}
-                {myComp === "MyProfile" ? <UserDetails /> : null}
-                {myComp === "Transaction" ? <TransactionList /> : null}
-                <button onClick={killSession}>Logout</button>
+                {myComp === "Transaction" ? <div><TransactionList /><CreateTransaction /></div> : null}
             </div>
 
     )
+
 }
