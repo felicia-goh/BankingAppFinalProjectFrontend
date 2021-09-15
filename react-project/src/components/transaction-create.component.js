@@ -6,14 +6,22 @@ export default function CreateTransaction() {
 
     const [transaction, setTransaction] = useState({ account_id: '', description: '', type: '', amount: '' });
     const [accounts, setAccounts] = useState([]);
-    const [currUser, setCurrUser] = useState([]);
+    const [currUserID, setCurrUserID] = useState([]);
 
     useEffect(() => {
+        getSessionID();
         retrieveAccounts();
-    }, [])
+    }, [currUserID])
+
+    function getSessionID() {
+        console.log("Inside getSessionID()")
+        let data = sessionStorage.getItem('mySession');
+        setCurrUserID(data);
+        return data;
+    }
 
     function retrieveAccounts() {
-        AccountDataService.get(2)                     // user is hardcoded
+        AccountDataService.get(currUserID)
             .then(response => {
                 setAccounts(response.data)
                 console.log(response.data);
@@ -24,12 +32,11 @@ export default function CreateTransaction() {
         console.log("accounts list: " + JSON.stringify(accounts));
     }
 
-    function CreateNewTransaction(e) {
-        e.preventDefault()
+    function createNewTransaction(e) {
+        e.preventDefault();
         console.log(transaction);
         TransactionDataService.create(transaction.account_id, transaction)
             .then(response => {
-                setCurrUser(response.data)
                 setTransaction({ ...transaction, email: '', login_password: '', isLoggedIn: true })
                 window.location.reload(false);
                 console.log("response: " + JSON.stringify(response));
@@ -42,15 +49,15 @@ export default function CreateTransaction() {
     return (
         <div>
             <h4>Deposit/ Withdraw</h4>
-            <form onSubmit={CreateNewTransaction}>
+            <form onSubmit={createNewTransaction}>
                 <select class="form-select" onChange={e => setTransaction({ ...transaction, type: e.target.value })}>
-                    <option value="label" selected disabled>Deposit or Withdraw?</option>
+                    <option value="label" selected disabled>-- Select transaction type --</option>
                     <option value="deposit">Deposit</option>
                     <option value="withdraw">Withdraw</option>
                 </select>
                 <label for="account" class="form-label">Account</label>
                 <select class="form-select" id="account" onChange={e => setTransaction({ ...transaction, account_id: e.target.value })}>
-                    <option value="label" selected disabled>Choose your account</option>
+                    <option value="label" selected disabled>-- Select an account --</option>
                     {accounts.map((account) => (
                         <option value={account.id}>Account ID: {account.id}, {account.account_type}, Balance: ${account.balance}</option>
                     ))}
