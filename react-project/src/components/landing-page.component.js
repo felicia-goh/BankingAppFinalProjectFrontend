@@ -11,6 +11,8 @@ import Logo from '../images/Logo.png'
 import csr from '../images/csr.jpg'
 import emoji from '../images/emoji.jpg'
 import Footer from './footer.component';
+import PayeeList from './payee-list.component';
+import AddPayee from './add-payee.component';
 
 export default function LandingPage() {
 
@@ -76,6 +78,12 @@ export default function LandingPage() {
                                 <li class="nav-item">
                                     <a class={myComp === "CreateServiceRequest" ? "nav-link active" : "nav-link"} href="#" onClick={() => { setComp("CreateServiceRequest") }}>Create Service Request</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onClick={() => { setComp("GetPayees") }}>Get All Payees</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" onClick={() => { setComp("AddPayee") }}>Add Payee</a>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-primary loginBtn" onClick={killSession}>Logout</button>
                         </div>
@@ -93,6 +101,8 @@ export default function LandingPage() {
                 </div>
 
                 <Footer />
+                {myComp === "GetPayees" ? <PayeeList /> : null}
+                {myComp === "AddPayee" ? <AddPayee /> : null}
             </div>
 
     )

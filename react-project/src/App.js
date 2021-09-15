@@ -13,8 +13,6 @@ function App() {
     <div className="App">
       <div class="container">
         <LandingPage />
-        {/* <TransactionList />
-        <CreateTransaction /> */}
       </div>
     </div>
   );
