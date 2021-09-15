@@ -30,7 +30,6 @@ export default function AccountList() {
             .catch(e => {
                 console.log(e);
             });
-        // console.log("user list: " + JSON.stringify(accounts));
     }
 
 
@@ -46,18 +45,12 @@ export default function AccountList() {
                     <button class="btn btn-primary" onClick={() => { setRender("createAccount") }}>Create Account</button>
                     {accounts.map((account) => (
                         <div>
-                            {/* onClick={showTransactions(account.id)} */}
-                            <div class="card-product m-3">
+                            <div class="card-product my-3">
                                 <div class="card-product-infos">
                                     <h2>${account.balance}</h2>
                                     <p>Account ID: {account.id}, {account.account_type} account</p>
                                 </div>
                             </div>
-
-                            {/* {clickAccount.clicked?
-                                <TransactionList /> : <div></div>
-                            } */}
-
                         </div>
                     ))}
                 </div>

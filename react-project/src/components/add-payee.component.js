@@ -62,7 +62,7 @@ function AddPayee() {
           a payee of Account <b>{payee.account_id}</b></h4>
           <h6 style={{color:'green'}}>[Status: successful]</h6>
         </div>
-        <button type="submit" class="btn btn-warning" onClick={reset}>Go Back / Add More Payees</button>
+        <button type="submit" class="btn btn-primary" onClick={reset}>Add Another Payee</button>
       </div>
       
       :

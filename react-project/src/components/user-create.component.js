@@ -4,13 +4,19 @@ import UserDataService from "../services/user.service"
 export default function CreateUser() {
 
     const [currUserID, setCurrUserID] = useState(0);
-    const [user, setUser] = useState({customer_name: '', email: '', address: '', pancard: '', login_password: '', secret_question: '', transaction_password: ''})
+    const [user, setUser] = useState({ customer_name: '', email: '', address: '', pancard: '', login_password: '', secret_question: '', transaction_password: '' })
 
     function getSessionID() {
         console.log("Inside getSessionID()")
         let data = sessionStorage.getItem('mySession');
         setCurrUserID(data);
         return data;
+    }
+
+    function setSessionID(id) {
+        console.log("Inside setSessionID()")
+        sessionStorage.setItem('mySession', id);
+        setCurrUserID(id);
     }
 
     useEffect(() => {
@@ -21,8 +27,10 @@ export default function CreateUser() {
         console.log(user);
         UserDataService.create(user)
             .then(response => {
+                setSessionID(response.data.id)
                 setUser({ ...user, isLoggedIn: true })
                 console.log("response: " + JSON.stringify(response));
+                window.location.reload(false);
             })
             .catch(e => {
                 console.log(e.detailedMsg);
@@ -30,7 +38,7 @@ export default function CreateUser() {
     }
 
     return (
-        <div>
+        <div class="wrapper">
             <h2>Sign Up</h2>
             <form onSubmit={createNewUser}>
                 <div class="mb-3">

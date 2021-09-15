@@ -22,7 +22,7 @@ function SingleService() {
   }
 
   function retrieveAccounts() {
-    AccountDataService.get(currUserID)                     // user is hardcoded
+    AccountDataService.get(currUserID)
       .then(response => {
         setAccounts(response.data)
         console.log(response.data);
@@ -56,9 +56,9 @@ function SingleService() {
     currService != "" ?
 
       <div>
-        <h4>Servcie Number: <b>{service.service_id}</b></h4>
-        <h4>Service Status: <b>{currService}</b></h4>
-        <button type="button" class="btn btn-warning" onClick={reset}>Fetch Another Request</button>
+        <h4>Service Number: <b>{service.service_id}</b></h4>
+        <h6>Status: <b>{currService}</b></h6>
+        <button type="button" class="btn btn-primary" onClick={reset}>Fetch Another Request</button>
       </div>
 
       :
@@ -67,7 +67,7 @@ function SingleService() {
         <h4>Get Service Request Status</h4>
         <form onSubmit={retrieveServiceStatus}>
 
-          <div class="description">
+          <div class="description mb-3">
             <label for="description" class="form-label">Account ID</label>
             <select class="form-select" id="account" onChange={e => setService({ ...service, account_id: e.target.value })}>
               <option value="label" selected disabled>Choose your account</option>

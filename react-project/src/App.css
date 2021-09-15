@@ -4,8 +4,8 @@
 
 /* Applies to all div in return statement of components with class="wrapper" */
 .wrapper {
-  margin-top: 50px;
-  margin-bottom: 100px;
+  margin-top: 30px;
+  margin-bottom: 260px;
 }
 
 /* LANDING PAGE BANNER */
@@ -30,8 +30,56 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+.loginBtn {
+  border-radius: 0 !important;
+  padding: 15px 20px !important;
+  background-color: #a18620 !important;
+  border: #a18620 !important;
+}
+
+.btn-primary {
+  background-color: #a18620 !important;
+  border-color: #a18620 !important;
+}
+
+.btn-primary:hover {
+  background-color: #ad9845 !important;
+  border-color: #ad9845 !important;
+}
+
+.container-fluid {
+  background-color: #eeeee6 !important;
+}
+
+.navbar-brand {
+  padding: 0 !important;
+}
+
 .navbar {
   margin-bottom: 50px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.nav-link {
+  padding: 15px 20px !important;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: #fff !important;
+  background: #bc9c22;
+}
+
+.myFooter {
+  position: fixed;
+  padding: 20px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f3f3f3;
+  color: grey;
+  text-align: center;
 }
 /* LANDING PAGE BANNER */
 
