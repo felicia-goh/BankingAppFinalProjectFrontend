@@ -5,6 +5,7 @@ import UserDetails from './user-details.component';
 import TransactionList from './transaction-list.component';
 import SingleService from './single-service';
 import CreateServiceRequest from './create-service-request.component';
+import CreateTransaction from './transaction-create.component';
 
 export default function LandingPage() {
 
@@ -98,13 +99,11 @@ export default function LandingPage() {
                 {myComp === "" ? <UserDetails /> : null}
                 {myComp === "Profile" ? <UserDetails /> : null}
                 {myComp === "Account" ? <AccountList /> : null}
+                {myComp === "Transaction" ? <div><TransactionList /><CreateTransaction /></div> : null}
                 {myComp === "MyProfile" ? <UserDetails /> : null}
-                {myComp === "Transaction" ? <TransactionList /> : null}
                 {myComp === "GetServiceStatus" ? <SingleService /> : null}
                 {myComp === "CreateServiceRequest" ? <CreateServiceRequest /> : null}
-                <button onClick={killSession}>Logout</button>
-                {myComp === "Transaction" ? <div><TransactionList /><CreateTransaction /></div> : null}
             </div>
 
     )
-
+}
